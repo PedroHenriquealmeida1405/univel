@@ -5,20 +5,20 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-public class Conexão {
-    private static final String URL = "jdbc:mysql://localhost:3306/univel?useSSL=false&serverTimezone=UTC";
+public class Conexao {
+    private static final String URL = "jdbc:mysql://localhost:3306/univel4a?useSSL=false&serverTimezone=UTC";
     private static final String USER = "root";
-    private static final String PASSWORD = "1234";
+    private static final String PASSWORD = "123456789";
 
     public static Connection conectar() {
         Connection Conexao = null;
         try {
 
-            Class.forName(className:"com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
 
             Conexao = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println(x:"conectado com sucesso ao Mysql!");
+            System.out.println("conectado com sucesso ao Mysql!");
 
 
         }catch (ClassNotFoundException e) {
