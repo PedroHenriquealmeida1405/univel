@@ -5,6 +5,8 @@ public class Usuario {
     private String login;
     private String senha;
     private String dataCriacao;
+    private String ativo;
+    private String tipo;
 
 
     public int getId() { return id; }
@@ -19,4 +21,11 @@ public class Usuario {
 
     public String getDataCriacao() { return dataCriacao; }
     public void setDataCriacao(String dataCricao) { this.dataCriacao = dataCricao; }
+
+    public String getTipo() {return tipo; }
+    public void setTipo(String tipo) {this.tipo = tipo; }
+
+    public String getAtivo() { return tipo; }
+    public void setAtivo(String ativo) { this.ativo = ativo; }
 }
+
