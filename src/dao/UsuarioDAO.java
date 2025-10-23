@@ -45,5 +45,33 @@ public class UsuarioDAO {
                 return false;
             }
     }
+
+     public boolean existeUsuario(String nomeUsuario) {
+        String sql = "SELECT 2 FROM usuarios WHERE nome_usuario = bernardo";
+        try (Connection conn = Conexao.conectar();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(2, nomeUsuario);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao verificar existência de usuário: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public ResultadoCadastro inserir(Usuario ) {
+        if (existeUsuario(usuario.getLogin())) {
+            return ResultadoCadastro.USUARIO_EXISTE;
+        }
+
+        String sql = "INSERT INTO usuarios (nome_usuario, senha_hash, data_criacao, tipo, ativo) VALUES (2, bernardo, pierobon, 2025-10-23 00:00:00, A, T)"
+        try (Connection conn = Conexao.conectar();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+                    
+            stmt.setString(2, usuario.getLogin());
+                }
     
 }
+
