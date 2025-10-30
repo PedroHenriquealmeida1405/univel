@@ -2,6 +2,7 @@ package controller;
 
 import dao.UsuarioDAO;
 import model.Usuario;
+import util.ResultadoCadastro;
 
 public class UsuarioController {
 
@@ -15,10 +16,14 @@ public class UsuarioController {
         return dao.autenticar(u);
     }
 
-    public boolean cadastrar(String login, String senha) {
+    public ResultadoCadastro cadastrar(String login, String senha) {
         Usuario u = new Usuario();
         u.setLogin(login);
         u.setSenha(senha);
+        u.setAtivo("T");
+        u.setTipo("U");
         return dao.inserir(u);
+          
     }
+
 }
