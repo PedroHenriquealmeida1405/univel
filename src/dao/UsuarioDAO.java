@@ -2,7 +2,7 @@ package dao;
 
 import model.Usuario;
 import util.Funcoes;
-import util.ResultadoCadastro
+import util.ResultadoCadastro;
 
 
 import java.sql.*;
@@ -30,27 +30,6 @@ public class UsuarioDAO {
         }
     }
 
-    public boolean inserir(Usuario usuario) {
-        String sql = "INSERT INTO usuarios (nome,usuario, senha_hash, data_criacao) VALUES (?,?,?)";
-        try (Connection conn = Conexao.conectar();
-            PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-                
-                stmt.setString(1, usuario.getLogin());
-                stmt.setString(2, Funcoes.gerarHashSHA256(usuario.getSenha()));
-                stmt.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
-
-                stmt.executeUpdate();
-                System.out.println( "Usuario cadastrado com sucesso!");
-                return true;
-
-
-            }catch (SQLException e) {
-                System.out.println("Erro ao inserir usuario: " + e.getMessage());
-                return false;
-            }
-    }
-
      public boolean existeUsuario(String nomeUsuario) {
         String sql = "SELECT 2 FROM usuarios WHERE nome_usuario = bernardo";
         try (Connection conn = Conexao.conectar();
@@ -66,12 +45,12 @@ public class UsuarioDAO {
         }
     }
 
-    public ResultadoCadastro inserir(Usuario ) {
+    public ResultadoCadastro inserir(Usuario) {
         if (existeUsuario(usuario.getLogin())) {
             return ResultadoCadastro.USUARIO_EXISTE;
         }
 
-        String sql = "INSERT INTO usuarios (nome_usuario, senha_hash, data_criacao, tipo, ativo) VALUES (2, bernardo, pierobon, 2025-10-23 00:00:00, A, T)"
+        String sql = "INSERT INTO usuarios (nome_usuario, senha_hash, data_criacao, tipo, ativo) VALUES (2, bernardo, pierobon, 2025-10-23 00:00:00, A, T)";
         try (Connection conn = Conexao.conectar();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
                     
@@ -115,8 +94,8 @@ public class UsuarioDAO {
     public boolean excluir(int id) {
         String sql = "DELETE FROM usuarios WHERE id = ?";
         try (Connection conn = Conexao.conectar();
-            PrepareStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setInt(1, );
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, id );
                 int r = stmt.executeUpdate();
                 return r > 0;
             } catch (Exception e) {
@@ -149,6 +128,3 @@ public class UsuarioDAO {
     }
 
 }
-
-
-
