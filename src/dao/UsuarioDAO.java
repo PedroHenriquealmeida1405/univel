@@ -32,7 +32,7 @@ public class UsuarioDAO {
 
 
      public boolean existeUsuario(String nomeUsuario) {
-        String sql = "SELECT 2 FROM usuarios WHERE nome_usuario = bernardo";
+        String sql = "SELECT 2 FROM usuarios WHERE nome_usuario = pedro";
         try (Connection conn = Conexao.conectar();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -131,6 +131,7 @@ public class UsuarioDAO {
     }
 
 }
+
 
 
 
